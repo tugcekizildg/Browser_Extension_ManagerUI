@@ -1,0 +1,315 @@
+@font-face {
+  font-family: "noto regular";
+  src: url(./assets/fonts/static/NotoSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: "noto medium";
+  src: url(./assets/fonts/static/NotoSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: "noto bold";
+  src: url(./assets/fonts/static/NotoSans-Bold.ttf);
+}
+
+:root {
+  --main-bg: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+
+  /* Cards */
+  --card-bg: hsl(200, 60%, 99%);
+  --card-outline: rgb(218, 225, 232);
+  --heading-text: hsl(227, 75%, 14%);
+  --description-text: hsl(226, 11%, 37%);
+
+  /* Buttons */
+  --button-bg: hsl(200, 60%, 99%);
+  --button-text: hsl(225, 23%, 24%);
+  --button-hover: hsl(0, 0%, 93%);
+  --button-hover-text: hsl(200, 60%, 99%);
+  --button-outline: rgb(218, 225, 232);
+  --button-inactive: hsl(0, 0%, 78%);
+  --button-active: hsl(3, 71%, 56%);
+  --button-focus: hsl(3, 71%, 56%);
+
+  --theme-button-bg: hsl(60, 5%, 93%);
+  --theme-hover-button: hsl(226, 11%, 37%);
+
+  --filter-btn-hover: hsl(3, 86%, 64%);
+
+  --remove-hover-button: hsl(3, 77%, 44%);
+
+  [data-theme="dark"] {
+    --main-bg: linear-gradient(180deg, #040918 0%, #091540 100%);
+
+    /* Cards */
+    --card-bg: hsl(226, 25%, 17%);
+    --card-outline: hsl(226, 11%, 37%);
+    --heading-text: hsl(200, 60%, 99%);
+    --description-text: hsl(0, 0%, 78%);
+
+    /* Buttons */
+    --button-bg: hsl(226, 25%, 17%);
+    --button-text: hsl(200, 60%, 99%);
+    --button-hover: hsl(226, 11%, 37%);
+    --button-hover-text: hsl(227, 75%, 14%);
+    --button-outline: hsl(226, 11%, 37%);
+    --button-inactive: hsl(0, 0%, 78%);
+    --button-active: hsl(3, 71%, 56%);
+    --button-focus: hsl(3, 71%, 56%);
+
+    --theme-button-bg: hsl(224, 24%, 24%);
+    --theme-hover-button: hsl(226, 11%, 37%);
+
+    --filter-btn-hover: hsl(3, 86%, 64%);
+
+    --remove-hover-button: hsl(3, 77%, 44%);
+  }
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img,
+svg,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+button {
+  line-height: 1.1;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  font-family: "noto medium", sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  outline: 1px solid var(--button-outline);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Reset End */
+
+/* Global styles */
+
+body {
+  background: var(--main-bg);
+  min-height: 100vh;
+  font-size: 16px;
+  font-family: "noto regular", sans-serif;
+}
+
+.container {
+  max-width: 90%;
+  width: 1280px;
+  margin: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+nav {
+  background-color: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem;
+  margin: 1rem 0 2rem 0;
+  border-radius: 1rem;
+}
+
+svg path.bg-color {
+  fill: var(--heading-text);
+}
+
+nav #themeToggle {
+  background-color: var(--theme-button-bg);
+  color: var(--heading-text);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+nav #themeToggle:hover {
+  background-color: var(--theme-hover-button);
+}
+
+nav #themeToggle:focus {
+  outline: 2px solid var(--button-focus);
+  outline-offset: 1.5px;
+}
+
+/* Buttons */
+
+.filter-btn {
+  color: var(--button-text);
+  font-size: 1.1rem;
+}
+
+.filter-btn:hover {
+  background-color: var(--remove-hover-button);
+  color: var(--button-hover-text);
+}
+
+.filter-btn:focus {
+  outline: 2px solid var(--button-focus);
+  outline-offset: 1.5px;
+}
+
+.filter-btn.active {
+  background-color: var(--remove-hover-button);
+  color: var(--button-hover-text);
+}
+
+.remove:hover,
+.remove:focus {
+  background-color: var(--remove-hover-button);
+  color: var(--button-hover-text);
+  outline: 2px solid var(--button-focus);
+  outline-offset: 1.5px;
+}
+
+/* Buttons End */
+
+/* Main */
+
+main .flex {
+  color: var(--heading-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.filter-btns {
+  display: flex;
+  gap: 1rem;
+}
+
+.extensions-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.extensions-cards .item {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 1rem;
+  outline: 1px solid var(--card-outline);
+}
+
+.extensions-cards .item .top {
+  color: var(--description-text);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.extensions-cards .item .top .info .name {
+  color: var(--heading-text);
+  font-size: 1.25rem;
+  font-family: "noto bold", sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.extensions-cards .item .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.extensions-cards .item .bottom .toggle-container {
+  width: fit-content;
+  display: block;
+  position: relative;
+}
+
+.extensions-cards .item .bottom .toggle-container .toggle-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.extensions-cards
+  .item
+  .bottom
+  .toggle-container
+  .toggle-input:checked
+  + .toggle-label {
+  background-color: var(--button-active);
+}
+
+.extensions-cards
+  .item
+  .bottom
+  .toggle-container
+  .toggle-input:focus-visible
+  + .toggle-label {
+  outline: 2px solid var(--button-focus);
+  outline-offset: 1.5px;
+}
+
+.extensions-cards
+  .item
+  .bottom
+  .toggle-container
+  .toggle-input:checked
+  + .toggle-label::before {
+  left: calc(100% - 24px);
+}
+
+.extensions-cards .item .bottom .toggle-container .toggle-label {
+  cursor: pointer;
+  background-color: var(--button-inactive);
+  width: 45px;
+  height: 26px;
+  display: block;
+  border-radius: 2rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.extensions-cards .item .bottom .toggle-container .toggle-label::before {
+  content: "";
+  position: absolute;
+  background-color: hsl(0, 0%, 100%);
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  transition: all 0.2s ease-in-out;
+}
+
+/*Media Queries*/
+
+@media (max-width: 768px) {
+  main .flex {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .filter-btns .filter-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+    border-radius: 1.5rem;
+  }
+}
